@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión de Equipo EXPO</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+
+</head>   
+<body>   
+    
+    <!-- "Conteiner" centra el contenido y limita ell ancho -->
+    <header class="container">
+        <nav>
+            <ul>
+                <li><b>Expo Management System</b></li>
+            </ul>
+            
+            <ul>
+                <li><a href="#">Integrantes</a></li>
+                <li><a href="#">Tareas</a></li>
+                <li><a href="#">Mi Perfil</a></li>
+                <li><a href="#" role="button">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h2>Integrantes del Equipo</h2>
+        <table id="Tabla" class="overflow-auto">
+            <thead>
+                <!-- "tr" - Table Row - Fila-->
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Correo Electronico</th>
+                    <th>Acciones</th> <!-- Botnones para Editar y Eliminar -->
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aqui van los registros que vienen de la API -->
+            </tbody>
+        </table>
+    </main>
+
+    <script src="JS/script.js"></script>
+</body>
+</html>   
