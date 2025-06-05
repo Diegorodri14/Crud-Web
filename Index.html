@@ -50,6 +50,23 @@
         </div>
     </main>
 
+    <dialog id="mdAgregar">
+        <article>
+            <header>
+                <a href="#" class="close" id="btnCerrar"></a>
+                <h3>Agregar Integrantes</h3>
+            </header>
+            <form id="frmAgregar">
+                <input type="text" id="txtNombre" placeholder="Nombre" required>
+                <input type="text" id="txtApellido" placeholder="Apellido" required>
+                <input type="email" name="txtEmail" value="Correo Electronico" required>
+                
+                <button type="submit" class="contrast">Guardar</button>
+            </form>
+        </article>
+    </dialog>
+
+
     <!-- Borton flotante para agregar registros -->
 
     <button id="btnAgregar" class="add-button">
