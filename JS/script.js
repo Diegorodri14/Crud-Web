@@ -33,8 +33,8 @@ function MostrarDatos(datos){
                 <td>${Integrante.Apellido}</td>     
                 <td>${Integrante.Correo}</td>       
                 <td>    
-                    <button>Editar</button>    
-                    <button>Eliminar</button>   
+                    <button onclick>Editar</button>    
+                    <button onclick = "EliminarPersona(${Integrante.id})">Eliminar</button>   
                 </td>
             </tr>
         `;
@@ -42,7 +42,6 @@ function MostrarDatos(datos){
 }
 
 ObtenerIntegrates();
-
 
 
 
@@ -100,3 +99,21 @@ document.getElementById("frmAgregar").addEventListener("submit", async e => {
         alert("El registro no pudo ser agregado")
     }
 });
+
+//Fucion para borrar registros
+async function EliminarPersona(id){
+    const confirmacion = confirm("¿Realmente deseas eliminar el registro");
+
+    //Validamos si el Usuario si escogio borrar
+    if(confirmacion){
+        await fetch(`${API_URL}/${id}`, {
+            method : "DELETE"
+        });
+
+        //Recargar la tabla despues de eliminar
+        ObtenerIntegrates();
+    }
+}
+
+
+
