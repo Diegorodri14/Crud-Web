@@ -44,7 +44,6 @@ function MostrarDatos(datos){
 ObtenerIntegrates();
 
 
-
 //Procesos para agregar un nuevo integrante
 const modal = document.getElementById("mdAgregar"); //Cuadro de dialogo
 const btnAgregar = document.getElementById("btnAgregar"); //Boton para agregar registro
@@ -115,8 +114,6 @@ async function EliminarPersona(id){
     }
 }
 
-
-
 /* Procesos para editar un registro */
 const modalEditar = document.getElementById("mdEditar");
 const btnCerrarEditar = document.getElementById("btnCerrarEditar");
@@ -130,9 +127,42 @@ function AbrirModalEditar(id, Nombre, Apellido, Correo){
     document.getElementById("txtIdEditar").value = id;
     document.getElementById("txtNombreEditar").value = Nombre;
     document.getElementById("txtApellidoEditar").value = Apellido;
-    document.getElementById("txtEmailEditar").value = Correo;
+    document.getElementById("txtCorreoEditar").value = Correo;
 
     //Abrimo el modal despues de pasar
     modalEditar.showModal();
-
 }
+
+// Cuando programamos con formularios vamos a trabajar el formulario completo
+
+document.getElementById("frmEditar").addEventListener("submit", async e =>{
+    e.preventDefault(); //Evita que el formulario se envie
+
+    //Capturamos los valores de los input 
+    const id = document.getElementById("txtIdEditar").value;
+    const Nombre = document.getElementById("txtNombreEditar").value.trim();
+    const Apellido = document.getElementById("txtApellidoEditar").value.trim();
+    const Correo = document.getElementById("txtCorreoEditar").value.trim();
+
+    //Validaciones de las constantes
+    if(!id || !Nombre || !Apellido || !Correo){
+        alert("Complete los campos vacios");
+        return; //Evita que el campo se siga ejecutando
+    }
+
+    //Llamada a la API
+    const respuesta = await fetch(`${API_URL}/${id}`, {
+        method: "PUT",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({Correo, Nombre, Apellido})
+    });
+
+    if(respuesta.ok){
+        alert("El registro fue actualizado con exito"); //Confirmacion
+        modalEditar.close(); //Cerramos el modal
+        ObtenerIntegrates();
+    }
+    else{
+        alert("El registro no pudo se actualizado correctamente");
+    }
+});
